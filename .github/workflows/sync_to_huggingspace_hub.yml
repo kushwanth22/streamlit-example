@@ -17,4 +17,4 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push https://KushwanthK:$HF_TOKEN@huggingface.co/spaces/KushwanthK/streamlit-example main
+        run: git push --force https://KushwanthK:$HF_TOKEN@huggingface.co/spaces/KushwanthK/streamlit-example main
