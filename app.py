@@ -1,6 +1,7 @@
 import streamlit as st
 # from IPython.display import display
 # from IPython.display import Markdown
+import os
 
 
 gemini_api_key = os.getenv("GEMINI_API_KEY")
