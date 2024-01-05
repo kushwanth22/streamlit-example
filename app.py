@@ -23,25 +23,26 @@ prompt = st.chat_input("Say something")
 if prompt:
     st.write(f"User has sent the following prompt: {prompt}")
 response = model.generate_content(prompt)
-st.chat_message(response.text)
+message = st.chat_message("assistant")
+message.write(response.text)
 
-# Define a function that will be called when the user clicks the button
-def greet_user():
-    # Get the user's name from the text input
-    name = st.text_input("Enter your name:")
+# # Define a function that will be called when the user clicks the button
+# def greet_user():
+#     # Get the user's name from the text input
+#     name = st.text_input("Enter your name:")
 
-    # Greet the user
-    st.write(f"Hello, {name}!")
+#     # Greet the user
+#     st.write(f"Hello, {name}!")
 
-# Add a button to the app
-st.button("Greet me!", greet_user)
+# # Add a button to the app
+# st.button("Greet me!", greet_user)
 
 
 
-st.title("Hello! Streamlit App")
+# st.title("Hello! Streamlit App")
 
-x = st.slider('Select a value')
-st.write(x, 'squared is', x * x)
+# x = st.slider('Select a value')
+# st.write(x, 'squared is', x * x)
 
 
 # st.title('AI Fitness Trainer: Squats Analysis')
