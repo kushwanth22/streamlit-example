@@ -2,3 +2,4 @@ keras
 tensorflow
 transformers
 google-generativeai
+streamlit-chat-media
