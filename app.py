@@ -49,6 +49,8 @@ if "chat_history" not in st.session_state:
 
 st.chat_input("Enter your message", on_submit=chat_actions, key="chat_input")
 
-for i in st.session_state["chat_history"]:
-    with st.chat_message(name=i["role"]):
-        st.write(i["content"])
+st.write(st.session_state["chat_history"])
+
+# for i in st.session_state["chat_history"]:
+#     with st.chat_message(name=i["role"]):
+#         st.write(i["content"])
