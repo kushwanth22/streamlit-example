@@ -3,3 +3,4 @@ tensorflow
 transformers
 google-generativeai
 streamlit-chat-media
+streamlit-chat
