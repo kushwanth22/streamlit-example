@@ -14,8 +14,16 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: branch details
-        run: git branch
+      - name: Removing sensitive files and their commits from Git history
+        run: git filter-branch --force --index-filter "git rm --cached --ignore-unmatch output_sample.mp4" --prune-empty --tag-name-filter cat -- --all
+      - name: remove these old commits
+        run: git for-each-ref --format="%(refname)" refs/original/ | xargs -I {} git update-ref -d {}
+      - name: garbage collector
+        run: git gc --prune=now && git gc --aggressive --prune=now
+      - name: push the changes
+        run: git push origin --force --all
+      - name: push all tags
+        run: git push origin --force --tags
       - name: LFS Install
         run: git lfs install
       - name: LFS Track
