@@ -6,9 +6,9 @@ from IPython.display import Markdown
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 
-def to_markdown(text):
-  text = text.replace('•', '  *')
-  return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True)
+# def to_markdown(text):
+#   text = text.replace('•', '  *')
+#   return Markdown(textwrap.indent(text, '> ', predicate=lambda _: True)
 
 import google.generativeai as genai
 
@@ -17,7 +17,7 @@ genai.configure(api_key = gemini_api_key)
 model = genai.GenerativeModel('gemini-pro')
 response = model.generate_content("What is the meaning of life?")
 
-to_markdown(response.text)
+st.text(response.text)
 
 # Define a function that will be called when the user clicks the button
 def greet_user():
