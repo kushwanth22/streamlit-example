@@ -22,8 +22,10 @@ model = genai.GenerativeModel('gemini-pro')
 prompt = st.chat_input("Say something")
 if prompt:
     st.write(f"User has sent the following prompt: {prompt}")
+else:
+    prompt = "who are you?"
 response = model.generate_content(prompt)
-message = st.chat_message("assistant")
+message = st.chat_message("ai")
 message.write(response.text)
 
 # # Define a function that will be called when the user clicks the button
