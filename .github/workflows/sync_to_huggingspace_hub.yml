@@ -17,7 +17,7 @@ jobs:
       - name: branch details
         run: git branch
       - name: reset commit
-        run: git reset --soft HEAD~
+        run: git filter-branch --force --index-filter "git rm --cached --ignore-unmatch output_sample.mp4" --prune-empty --tag-name-filter cat -- --all
       - name: LFS Install
         run: git lfs install
       - name: LFS Track
