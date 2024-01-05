@@ -20,8 +20,6 @@ jobs:
         run: git for-each-ref --format="%(refname)" refs/original/ | xargs -I {} git update-ref -d {}
       - name: garbage collector
         run: git gc --prune=now && git gc --aggressive --prune=now
-      - name: push all tags
-        run: git push origin --force --tags
       - name: push the changes
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
