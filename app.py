@@ -38,7 +38,7 @@ def chat_actions():
     st.session_state["chat_history"].append(
         {
             "role": "assistant",
-            "content": response,
+            "content": response.text,
         },  # This can be replaced with your chat response logic
     )
 
@@ -49,8 +49,6 @@ if "chat_history" not in st.session_state:
 
 st.chat_input("Enter your message", on_submit=chat_actions, key="chat_input")
 
-st.write(st.session_state["chat_history"])
-
-# for i in st.session_state["chat_history"]:
-#     with st.chat_message(name=i["role"]):
-#         st.write(i["content"])
+for i in st.session_state["chat_history"]:
+    with st.chat_message(name=i["role"]):
+        st.write(i["content"])
