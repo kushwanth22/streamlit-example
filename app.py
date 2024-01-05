@@ -16,9 +16,14 @@ import google.generativeai as genai
 genai.configure(api_key = gemini_api_key)
 
 model = genai.GenerativeModel('gemini-pro')
-response = model.generate_content("What is the meaning of life?")
 
-st.text(response.text)
+
+
+prompt = st.chat_input("Say something")
+if prompt:
+    st.write(f"User has sent the following prompt: {prompt}")
+response = model.generate_content(prompt)
+st.chat_message(response.text)
 
 # Define a function that will be called when the user clicks the button
 def greet_user():
