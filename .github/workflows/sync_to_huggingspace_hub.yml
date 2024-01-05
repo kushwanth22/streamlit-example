@@ -14,14 +14,10 @@ jobs:
         with:
           fetch-depth: 0
           lfs: true
-      - name: remove git history of all large file
-        run: git filter-branch --index-filter --f "git rm -rf --cached --ignore-unmatch “output_sample.mp4” HEAD
-      - name: remove git history of all large file
-        run: git push origin --force --all
       - name: LFS Install
         run: git lfs install
       - name: LFS Track
-        run: git lfs track *.jpg
+        run: git lfs track *.mp4
       - name: Checkout LFS objects
         run: git lfs checkout
       - name: Push to hub
