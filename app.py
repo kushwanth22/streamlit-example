@@ -2,14 +2,11 @@ import streamlit as st
 import google.generativeai as genai
 import os
 
-
 gemini_api_key = os.getenv("GEMINI_API_KEY")
 
 genai.configure(api_key = gemini_api_key)
 
 model = genai.GenerativeModel('gemini-pro')
-
-
 
 # prompt = st.chat_input("Say something")
 # if prompt:
@@ -19,15 +16,6 @@ model = genai.GenerativeModel('gemini-pro')
 # response = model.generate_content(prompt)
 # message = st.chat_message("ai")
 # message.write(response.text)
-
-
-import string
-import random
-
-
-def randon_string() -> str:
-    return "".join(random.choices(string.ascii_uppercase + string.digits, k=10))
-
 
 def chat_actions():
     st.session_state["chat_history"].append(
@@ -52,3 +40,12 @@ st.chat_input("Enter your message", on_submit=chat_actions, key="chat_input")
 for i in st.session_state["chat_history"]:
     with st.chat_message(name=i["role"]):
         st.write(i["content"])
+
+
+import numpy as np
+from PIL import Image
+
+img_file_buffer = st.file_uploader('Upload a PNG image', type='png')
+if img_file_buffer is not None:
+    image = Image.open(img_file_buffer)
+    img_array = np.array(image)
