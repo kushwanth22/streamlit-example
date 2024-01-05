@@ -20,12 +20,12 @@ jobs:
         run: git for-each-ref --format="%(refname)" refs/original/ | xargs -I {} git update-ref -d {}
       - name: garbage collector
         run: git gc --prune=now && git gc --aggressive --prune=now
+      - name: push all tags
+        run: git push origin --force --tags
       - name: push the changes
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: git push origin --force https://KushwanthK:$HF_TOKEN@huggingface.co/spaces/KushwanthK/streamlit-example main
-      - name: push all tags
-        run: git push origin --force --tags
       - name: LFS Install
         run: git lfs install
       - name: LFS Track
