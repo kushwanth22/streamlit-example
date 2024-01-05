@@ -37,9 +37,6 @@ st.write(x, 'squared is', x * x)
 
 
 
-# import streamlit as st
-
-
 # st.title('AI Fitness Trainer: Squats Analysis')
 
 
