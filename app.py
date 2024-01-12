@@ -49,10 +49,11 @@ for i in st.session_state["chat_history"]:
 import numpy as np
 from PIL import Image
 
+def uploader_callback():
+    print('Uploaded file')
+
 img_file_buffer = st.file_uploader('Upload a PNG image', on_change=uploader_callback, type=['png','jpg'])
 if img_file_buffer is not None:
     image = Image.open(img_file_buffer)
     img_array = np.array(image)
 
-def uploader_callback():
-    print('Uploaded file')
